@@ -1,0 +1,112 @@
+{
+  "arr": {
+    "extrapolation_months": 6,
+    "growth_damping": 0.9,
+    "growth_decay_months": 4.0,
+    "fan_pct_per_month": 0.025,
+    "triangulation": {
+      "weight_signals": 0.3,
+      "lookback_days": 30,
+      "min_points": 14,
+      "signal_clamp_monthly": [-0.10, 0.30],
+      "signal_weights": { "openrouter_tokens": 0.4, "vercel_spend_share": 0.2, "sdk_downloads": 0.3, "github_code_refs": 0.1 }
+    },
+    "companies": {
+      "anthropic": {
+        "label": "Anthropic",
+        "color": "#c8622f",
+        "start": { "date": "2024-02-01", "value_b": 0.1 },
+        "checkpoints": [
+          { "date": "2024-12-31", "value_b": 1,  "src": "Public reports: ~$1B run-rate exiting 2024" },
+          { "date": "2025-08-01", "value_b": 5,  "src": "Public reports: ~$5B run-rate (Aug 2025)" },
+          { "date": "2025-12-31", "value_b": 9,  "src": "Public reports: $9B exiting 2025" },
+          { "date": "2026-02-15", "value_b": 14, "src": "Public reports: $14B (Feb 2026)" },
+          { "date": "2026-04-12", "value_b": 30, "src": "Public reports: $30B run-rate (Apr 2026)" },
+          { "date": "2026-05-14", "value_b": 47, "src": "Series H announcement: $47B as of mid-May 2026" },
+          { "date": "2026-07-15", "value_b": 75, "src": "Curated: $75B run-rate as of Jul 15, 2026" }
+        ],
+        "signals": {
+          "openrouter_lab": "anthropic",
+          "vercel_lab": "anthropic",
+          "npm": ["@anthropic-ai/sdk", "@anthropic-ai/claude-code", "@ai-sdk/anthropic"],
+          "pypi": ["anthropic", "langchain-anthropic"],
+          "github_queries": ["ANTHROPIC_API_KEY", "api.anthropic.com"]
+        }
+      },
+      "openai": {
+        "label": "OpenAI",
+        "color": "#2f8f75",
+        "start": { "date": "2024-02-01", "value_b": 2.0 },
+        "checkpoints": [
+          { "date": "2025-06-09", "value_b": 10, "src": "Public reports: $10B annualized (Jun 2025)" },
+          { "date": "2025-12-31", "value_b": 20, "src": "Public reports: ~$20B annualized exiting 2025" },
+          { "date": "2026-03-31", "value_b": 25, "src": "Public reports: >$25B (Mar 2026)" },
+          { "date": "2026-05-30", "value_b": 33, "src": "Public reports: ~$33B run-rate (May 2026)" }
+        ],
+        "signals": {
+          "openrouter_lab": "openai",
+          "vercel_lab": "openai",
+          "npm": ["openai", "@ai-sdk/openai", "@openai/codex"],
+          "pypi": ["openai"],
+          "github_queries": ["OPENAI_API_KEY", "api.openai.com"]
+        }
+      }
+    }
+  },
+  "openrouter": {
+    "start_date": "2025-01-01",
+    "labs": ["anthropic", "openai", "google", "deepseek", "x-ai", "moonshotai", "z-ai", "minimax", "qwen", "meta-llama"],
+    "watch_models": [
+      { "label": "claude-5-fable",  "match": "anthropic/claude-5-fable" },
+      { "label": "claude-sonnet",   "match": "anthropic/claude-sonnet" },
+      { "label": "gpt-5",           "match": "openai/gpt-5" },
+      { "label": "gemini-3",        "match": "google/gemini-3" },
+      { "label": "deepseek",        "match": "deepseek/" },
+      { "label": "grok",            "match": "x-ai/grok" }
+    ],
+    "hero_model": { "label": "Claude Fable 5", "match": "anthropic/claude-5-fable" }
+  },
+  "gpu": {
+    "models": ["H100 SXM", "H200", "B200", "A100 SXM4", "RTX 5090"]
+  },
+  "sdk": {
+    "start_date": "2025-01-01",
+    "npm": ["@anthropic-ai/sdk", "openai", "@anthropic-ai/claude-code", "@ai-sdk/anthropic", "@ai-sdk/openai", "@openai/codex"],
+    "pypi": ["anthropic", "openai", "langchain-anthropic"]
+  },
+  "proxies": {
+    "github_queries": ["ANTHROPIC_API_KEY", "api.anthropic.com", "OPENAI_API_KEY", "api.openai.com"],
+    "dependents_repos": ["anthropics/anthropic-sdk-python", "anthropics/anthropic-sdk-typescript", "openai/openai-python", "openai/openai-node"],
+    "trends_keywords": ["Claude API", "OpenAI API"]
+  },
+  "vercel": {
+    "history_labs": ["anthropic", "openai", "google", "deepseek"]
+  },
+  "news": {
+    "query": "AI data center",
+    "max_items": 30,
+    "pinned": []
+  },
+  "signals": {
+    "kol": [
+      {
+        "date": "2026-06",
+        "who": "Dario Amodei",
+        "via": "Dwarkesh Podcast — \"We are near the end of the exponential\"",
+        "take": "On datacenter buildout pace vs revenue timing — \"being off by a couple of years is destructive.\" Reiterates 2026-27 \"country of geniuses in a datacenter\"; Claude Code is now enterprise-led, coding agents are the main token consumers.",
+        "url": "https://www.dwarkesh.com/"
+      },
+      {
+        "date": "2026-04",
+        "who": "Andrej Karpathy",
+        "via": "Sequoia AI Ascent (with Stephanie Zhan)",
+        "take": "AI is becoming the new operating layer for digital work: from vibe coding into agentic engineering — humans shift to directing, supervising, and orchestrating agents.",
+        "url": "https://www.sequoiacap.com/"
+      }
+    ],
+    "reports": [
+      { "title": "a16z × OpenRouter — State of AI (100T token study)", "url": "https://openrouter.ai/state-of-ai" },
+      { "title": "Vercel AI Gateway Production Index", "url": "https://vercel.com/ai-gateway/leaderboards/models" }
+    ]
+  }
+}
